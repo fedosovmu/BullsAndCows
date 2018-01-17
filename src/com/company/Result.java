@@ -1,0 +1,41 @@
+package com.company;
+
+public class Result {
+    public SecretNumber Number;
+    public int Bulls;
+    public int Cows;
+    public boolean IsWin;
+
+    Result(Player player, SecretNumber guess) {
+        SecretNumber number = player.Number;
+        int bulls = 0, cows = 0;
+
+        for (int x: number.Digits) {
+            Boolean flag = false;
+            for (int y: guess.Digits) {
+                if (x == y) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+                cows++;
+        }
+
+        for (int i = 0; i < 4; i++) {
+            if (number.Digits[i] == guess.Digits[i]) {
+                bulls++;
+                cows--;
+            }
+        }
+
+        Bulls = bulls;
+        Cows = cows;
+        IsWin = (Bulls == 4);
+    }
+
+    @Override
+    public String toString() {
+        return Bulls + "б " + Cows + "к";
+    }
+}
