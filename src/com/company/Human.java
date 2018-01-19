@@ -1,24 +1,22 @@
 package com.company;
-
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
-public class Human {
-
+public class Human extends Player {
+   Scanner in;
 
     Human (String name) {
+        super(name);
         in = new Scanner(System.in);
-        Name = name;
     }
 
     public void PickNumber () {
-        System.out.print(Name + " введите число: ");
+        System.out.print(Name + " загадайте число: ");
         Number = new SecretNumber(in.nextInt());
-    }
 
+    }
     public SecretNumber SayGuess () {
         System.out.print(Name + ": ");
         return new SecretNumber(in.nextInt());
     }
-
-
 }

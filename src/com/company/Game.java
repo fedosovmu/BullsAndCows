@@ -7,28 +7,30 @@ public class Game {
     Game (Player playerA, Player playerB) {
         PlayerA = playerA;
         PlayerB = playerB;
-        System.out.println("Новая игра, (" + PlayerA.Name + " vs " + PlayerB.Name + ")");
+        System.out.println("\nНовая игра, (" + PlayerA.Name + " vs " + PlayerB.Name + ")");
 
         playerA.PickNumber();
         playerB.PickNumber();
 
 
         while (true) {
-            SecretNumber guessA = playerA.SayGuess();
-            Result resultA = new Result(playerB, guessA);
-            System.out.println(resultA);
+            SecretNumber guessA = PlayerA.SayGuess();
+            Result resultA = new Result(PlayerB, guessA);
+            PlayerA.History.add(resultA);
+            System.out.println(PlayerA.Name + ": " + guessA + " - " + resultA);
 
             if (resultA.IsWin) {
-                System.out.println("Игрок " + playerA.Name + " победил!");
+                System.out.println("Игрок " + PlayerA.Name + " победил!");
                 break;
             }
 
-            SecretNumber guessB = playerB.SayGuess();
-            Result resultB = new Result(playerA, guessB);
-            System.out.println(resultB);
+            SecretNumber guessB = PlayerB.SayGuess();
+            Result resultB = new Result(PlayerA, guessB);
+            PlayerB.History.add(resultB);
+            System.out.println(PlayerB.Name + ": " + guessB + " - " + resultB);
 
             if (resultB.IsWin) {
-                System.out.println("Игрок " + playerB.Name + " победил!");
+                System.out.println("Игрок " + PlayerB.Name + " победил!");
                 break;
             }
         }

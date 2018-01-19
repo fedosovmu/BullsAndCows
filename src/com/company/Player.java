@@ -1,25 +1,23 @@
 package com.company;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Player {
-    Scanner in;
+public abstract class Player {
     String Name;
     SecretNumber Number;
-    List<Result> History;
+    ArrayList<Result> History;
 
     Player (String name) {
-        in = new Scanner(System.in);
+        History = new ArrayList<Result>();
         Name = name;
     }
 
-    public void PickNumber () {
-        System.out.print(Name + " введите число: ");
-        Number = new SecretNumber(in.nextInt());
+    public void AddToHistory (Result result) {
+        History.add(result);
     }
 
-    public SecretNumber SayGuess () {
-        System.out.print(Name + ": ");
-        return new SecretNumber(in.nextInt());
-    }
+    public abstract void PickNumber ();
+    public abstract SecretNumber SayGuess ();
 }

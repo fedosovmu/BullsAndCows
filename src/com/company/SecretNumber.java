@@ -6,12 +6,13 @@ public class SecretNumber {
     public int Value;
     public int[] Digits;
 
-    SecretNumber(int a, int b, int c, int d) {
-        Value = a * 1000 + b * 100 + c * 10 + d;
-        Digits[0] = a;
-        Digits[1] = b;
-        Digits[2] = c;
-        Digits[3] = d;
+    SecretNumber (int[] digits) {
+        Digits = new int[4];
+        Digits[0] = Math.abs(digits[0] % 10);
+        Digits[1] = Math.abs(digits[1] % 10);
+        Digits[2] = Math.abs(digits[2] % 10);
+        Digits[3] = Math.abs(digits[3] % 10);
+        Value = Digits[0] * 1000 + Digits[1] * 100 + Digits[2] * 10 + Digits[3];
     }
 
     SecretNumber (int value) {

@@ -1,16 +1,16 @@
 package com.company;
 
 public class Result {
-    public SecretNumber Number;
+    public SecretNumber Guess;
     public int Bulls;
     public int Cows;
     public boolean IsWin;
 
     Result(Player player, SecretNumber guess) {
-        SecretNumber number = player.Number;
+        Guess = guess;
         int bulls = 0, cows = 0;
 
-        for (int x: number.Digits) {
+       for (int x: player.Number.Digits) {
             Boolean flag = false;
             for (int y: guess.Digits) {
                 if (x == y) {
@@ -23,7 +23,7 @@ public class Result {
         }
 
         for (int i = 0; i < 4; i++) {
-            if (number.Digits[i] == guess.Digits[i]) {
+            if (player.Number.Digits[i] == guess.Digits[i]) {
                 bulls++;
                 cows--;
             }
